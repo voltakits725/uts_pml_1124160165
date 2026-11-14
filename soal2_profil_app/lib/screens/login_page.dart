@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+//import 'profile_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -9,41 +10,17 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  // Key untuk mengakses dan menjalankan validasi Form.
   final _formKey = GlobalKey<FormState>();
 
+  // Controller untuk mengambil input pengguna.
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  bool _isLoading = false;
-  bool _obscurePassword = true;
+  // Mengatur apakah password terlihat atau disembunyikan.
+  bool _passwordVisible = false;
 
-  Future<void> _login() async {
-    if (!_formKey.currentState!.validate()) {
-      return;
-    }
-
-    setState(() {
-      _isLoading = true;
-    });
-
-    // Simulasi proses login
-    await Future.delayed(const Duration(seconds: 2));
-
-    if (!mounted) return;
-
-    setState(() {
-      _isLoading = false;
-    });
-
-    // Navigasi ke halaman profil
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const ProfilePage(),
-      ),
-    );
-  }
-
+  // Membersihkan controller ketika halaman ditutup.
   @override
   void dispose() {
     _emailController.dispose();
@@ -51,130 +28,156 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
+  // Fungsi login.
+  void _login() {
+    // Jalankan semua validator di dalam Form.
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+
+    // Jika validasi berhasil, buka halaman profil.
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (_) => const ProfilePage(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+
     return Scaffold(
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(24),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const Icon(
-                    Icons.account_circle,
-                    size: 90,
-                    color: Colors.indigo,
-                  ),
+            child: Card(
+              elevation: 8,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // Ikon aplikasi.
+                      Image.asset(
+                        'assets/images/logo-login.png',
+                        height: 100,
+                        width: 100,
+                        fit: BoxFit.contain,
+                      ),
 
-                  const SizedBox(height: 20),
+                      const SizedBox(height: 20),
 
-                  Text(
-                    'Selamat Datang!',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineMedium,
-                  ),
-
-                  const SizedBox(height: 8),
-
-                  Text(
-                    'Silakan login untuk melihat profil mahasiswa',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-
-                  const SizedBox(height: 32),
-
-                  // Input Email
-                  TextFormField(
-                    controller: _emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
-                      labelText: 'Email',
-                      prefixIcon: Icon(Icons.email),
-                      border: OutlineInputBorder(),
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Email wajib diisi';
-                      }
-
-                      if (!RegExp(
-                        r'^[\w.-]+@[\w.-]+\.\w+$',
-                      ).hasMatch(value)) {
-                        return 'Format email tidak valid';
-                      }
-
-                      return null;
-                    },
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  // Input Password
-                  TextFormField(
-                    controller: _passwordController,
-                    obscureText: _obscurePassword,
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      prefixIcon: const Icon(Icons.lock),
-                      border: const OutlineInputBorder(),
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _obscurePassword
-                              ? Icons.visibility_off
-                              : Icons.visibility,
+                      // Judul halaman.
+                      const Text(
+                        'Selamat Datang!',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold,
                         ),
-                        onPressed: () {
-                          setState(() {
-                            _obscurePassword = !_obscurePassword;
-                          });
+                      ),
+
+                      const SizedBox(height: 8),
+
+                      Text(
+                        'Silakan login untuk melanjutkan',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: cs.onSurfaceVariant,
+                        ),
+                      ),
+
+                      const SizedBox(height: 32),
+
+                      // Input email.
+                      TextFormField(
+                        controller: _emailController,
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: const InputDecoration(
+                          labelText: 'Email',
+                          prefixIcon: Icon(Icons.email_outlined),
+                        ),
+                        validator: (value) {
+                          final email = (value ?? '').trim();
+
+                          if (email.isEmpty) {
+                            return 'Email tidak boleh kosong';
+                          }
+
+                          final polaEmail =
+                              RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$');
+
+                          if (!polaEmail.hasMatch(email)) {
+                            return 'Format email tidak valid';
+                          }
+
+                          return null;
                         },
                       ),
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Password wajib diisi';
-                      }
 
-                      if (value.length < 6) {
-                        return 'Password minimal 6 karakter';
-                      }
+                      const SizedBox(height: 16),
 
-                      return null;
-                    },
-                  ),
+                      // Input password.
+                      TextFormField(
+                        controller: _passwordController,
+                        obscureText: !_passwordVisible,
+                        decoration: InputDecoration(
+                          labelText: 'Password',
+                          prefixIcon: const Icon(Icons.lock_outline),
 
-                  const SizedBox(height: 28),
-
-                  // Tombol Login
-                  ElevatedButton(
-                    onPressed: _isLoading ? null : _login,
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 16,
-                      ),
-                      backgroundColor: Colors.indigo,
-                      foregroundColor: Colors.white,
-                    ),
-                    child: _isLoading
-                        ? const SizedBox(
-                            height: 22,
-                            width: 22,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              color: Colors.white,
+                          // Tombol untuk melihat atau menyembunyikan password.
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                _passwordVisible = !_passwordVisible;
+                              });
+                            },
+                            icon: Icon(
+                              _passwordVisible
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
                             ),
-                          )
-                        : const Text('Login'),
+                          ),
+                        ),
+                        validator: (value) {
+                          final password = value ?? '';
+
+                          if (password.isEmpty) {
+                            return 'Password tidak boleh kosong';
+                          }
+
+                          if (password.length < 8) {
+                            return 'Password minimal 8 karakter';
+                          }
+
+                          return null;
+                        },
+                      ),
+
+                      const SizedBox(height: 24),
+
+                      // Tombol login.
+                      FilledButton(
+                        onPressed: _login,
+                        style: FilledButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 16,
+                          ),
+                        ),
+                        child: const Text('Login'),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
+            )
           ),
         ),
       ),
@@ -182,19 +185,11 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-// Halaman sementara, nanti kita ganti dengan ProfilePage asli.
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profil Mahasiswa'),
-      ),
-      body: const Center(
-        child: Text('Berhasil Login!'),
-      ),
-    );
+    return const Placeholder();
   }
 }
