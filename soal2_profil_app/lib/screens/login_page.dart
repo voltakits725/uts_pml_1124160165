@@ -15,7 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
 
   bool _isLoading = false;
-  
+  bool _obscurePassword = true;
 
   Future<void> _login() async {
     if (!_formKey.currentState!.validate()) {
@@ -118,12 +118,23 @@ class _LoginPageState extends State<LoginPage> {
                   // Input Password
                   TextFormField(
                     controller: _passwordController,
-                    
+                    obscureText: _obscurePassword,
                     decoration: InputDecoration(
                       labelText: 'Password',
                       prefixIcon: const Icon(Icons.lock),
                       border: const OutlineInputBorder(),
-                      
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscurePassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _obscurePassword = !_obscurePassword;
+                          });
+                        },
+                      ),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -171,8 +182,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-
-
+// Halaman sementara, nanti kita ganti dengan ProfilePage asli.
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
