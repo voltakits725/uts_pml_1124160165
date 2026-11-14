@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 // import 'profile_page.dart';
@@ -55,88 +54,68 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: Stack(
-        children: [
-          // Background kampus
-          Positioned.fill(
-            child: Image.asset(
-              'assets/images/campus_static.gif',
-              fit: BoxFit.cover,
-            ),
-          ),
-
-          // Overlay background
-          Positioned.fill(
-            child: Container(
-              color: Colors.black.withOpacity(0.20),
-            ),
-          ),
-
-          // Login content
-          SafeArea(
-            child: Center(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.all(24),
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    maxWidth: 420,
+      backgroundColor: const Color(0xFFF5F3FF),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 420),
+              child: Column(
+                children: [
+                  // Ilustrasi kampus di atas
+                  Image.asset(
+                    'assets/images/login-ilustrasi.png',
+                    height: screenHeight * 0.3,
+                    fit: BoxFit.contain,
                   ),
-                  
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
+
+                  const SizedBox(height: 16),
+
+                  // Card form login
+                  Container(
+                    padding: const EdgeInsets.all(24),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(28),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.indigo.withOpacity(0.12),
+                          blurRadius: 24,
+                          offset: const Offset(0, 8),
+                        ),
+                      ],
+                    ),
                     child: Form(
                       key: _formKey,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          // Logo
-                          Image.asset(
-                            'assets/images/logo-login.png',
-                            height: 100,
-                            width: 100,
-                            fit: BoxFit.contain,
-                          ),
-
-                          const SizedBox(height: 24),
-
                           // Judul
                           Text(
                             'Selamat Datang!',
                             textAlign: TextAlign.center,
                             style: Theme.of(context)
-                                .textTheme.headlineSmall
+                                .textTheme
+                                .headlineSmall
                                 ?.copyWith(
-                                  color: Colors.white,
+                                  color: Colors.indigo.shade800,
                                   fontWeight: FontWeight.bold,
-                                  shadows: [
-                                    const Shadow(
-                                      color: Colors.black54,
-                                      blurRadius: 8,
-                                    ),
-                                  ],
                                 ),
                           ),
 
                           const SizedBox(height: 8),
 
-                          const Text(
+                          Text(
                             'Silakan login untuk melanjutkan',
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              shadows: [
-                                Shadow(
-                                  color: Colors.black54,
-                                  blurRadius: 6,
-                                ),
-                              ],
-                            ),
+                            style: TextStyle(color: Colors.grey.shade600),
                           ),
 
-                          const SizedBox(height: 36),
+                          const SizedBox(height: 28),
 
                           // Email
                           TextFormField(
@@ -146,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                               labelText: 'Email',
                               prefixIcon: const Icon(Icons.email_outlined),
                               filled: true,
-                              fillColor: Colors.white.withOpacity(0.9),
+                              fillColor: const Color(0xFFF5F3FF),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(14),
                                 borderSide: BorderSide.none,
@@ -159,9 +138,8 @@ class _LoginPageState extends State<LoginPage> {
                                 return 'Email tidak boleh kosong';
                               }
 
-                              if (!RegExp(
-                                r'^[^@\s]+@[^@\s]+\.[^@\s]+$',
-                              ).hasMatch(email)) {
+                              if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
+                                  .hasMatch(email)) {
                                 return 'Format email tidak valid';
                               }
 
@@ -191,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                               filled: true,
-                              fillColor: Colors.white.withOpacity(0.9),
+                              fillColor: const Color(0xFFF5F3FF),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(14),
                                 borderSide: BorderSide.none,
@@ -220,9 +198,8 @@ class _LoginPageState extends State<LoginPage> {
                             style: FilledButton.styleFrom(
                               backgroundColor: Colors.indigo.shade700,
                               foregroundColor: Colors.white,
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 16,
-                              ),
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 16),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30),
                               ),
@@ -242,12 +219,11 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-
-                ),
+                ],
               ),
             ),
           ),
-        ],
+        ),
       ),
     );
   }
