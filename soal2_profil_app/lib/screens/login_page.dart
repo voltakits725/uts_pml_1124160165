@@ -84,152 +84,165 @@ class _LoginPageState extends State<LoginPage> {
                   constraints: const BoxConstraints(
                     maxWidth: 420,
                   ),
-                  child: Card(
-                    elevation: 8,
-                    color: colorScheme.surface,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(24),
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
-                          crossAxisAlignment:
-                              CrossAxisAlignment.stretch,
-                          children: [
-                            // Logo aplikasi
-                            Image.asset(
-                              'assets/images/logo-login.png',
-                              height: 100,
-                              width: 100,
-                              fit: BoxFit.contain,
+                  
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          // Logo
+                          Image.asset(
+                            'assets/images/logo-login.png',
+                            height: 100,
+                            width: 100,
+                            fit: BoxFit.contain,
+                          ),
+
+                          const SizedBox(height: 24),
+
+                          // Judul
+                          Text(
+                            'Selamat Datang!',
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .textTheme.headlineSmall
+                                ?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  shadows: [
+                                    const Shadow(
+                                      color: Colors.black54,
+                                      blurRadius: 8,
+                                    ),
+                                  ],
+                                ),
+                          ),
+
+                          const SizedBox(height: 8),
+
+                          const Text(
+                            'Silakan login untuk melanjutkan',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              shadows: [
+                                Shadow(
+                                  color: Colors.black54,
+                                  blurRadius: 6,
+                                ),
+                              ],
                             ),
+                          ),
 
-                            const SizedBox(height: 20),
+                          const SizedBox(height: 36),
 
-                            // Judul
-                            Text(
-                              'Selamat Datang!',
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineSmall
-                                  ?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ),
-
-                            const SizedBox(height: 8),
-
-                            Text(
-                              'Silakan login untuk melanjutkan',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: colorScheme.onSurfaceVariant,
+                          // Email
+                          TextFormField(
+                            controller: _emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                              labelText: 'Email',
+                              prefixIcon: const Icon(Icons.email_outlined),
+                              filled: true,
+                              fillColor: Colors.white.withOpacity(0.9),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(14),
+                                borderSide: BorderSide.none,
                               ),
                             ),
+                            validator: (value) {
+                              final email = (value ?? '').trim();
 
-                            const SizedBox(height: 32),
+                              if (email.isEmpty) {
+                                return 'Email tidak boleh kosong';
+                              }
 
-                            // Input email
-                            TextFormField(
-                              controller: _emailController,
-                              keyboardType:
-                                  TextInputType.emailAddress,
-                              decoration: const InputDecoration(
-                                labelText: 'Email',
-                                prefixIcon: Icon(
-                                  Icons.email_outlined,
+                              if (!RegExp(
+                                r'^[^@\s]+@[^@\s]+\.[^@\s]+$',
+                              ).hasMatch(email)) {
+                                return 'Format email tidak valid';
+                              }
+
+                              return null;
+                            },
+                          ),
+
+                          const SizedBox(height: 18),
+
+                          // Password
+                          TextFormField(
+                            controller: _passwordController,
+                            obscureText: !_passwordVisible,
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                              prefixIcon: const Icon(Icons.lock_outline),
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _passwordVisible = !_passwordVisible;
+                                  });
+                                },
+                                icon: Icon(
+                                  _passwordVisible
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
                                 ),
                               ),
-                              validator: (value) {
-                                final email = (value ?? '').trim();
-
-                                if (email.isEmpty) {
-                                  return 'Email tidak boleh kosong';
-                                }
-
-                                final emailPattern = RegExp(
-                                  r'^[^@\s]+@[^@\s]+\.[^@\s]+$',
-                                );
-
-                                if (!emailPattern.hasMatch(email)) {
-                                  return 'Format email tidak valid';
-                                }
-
-                                return null;
-                              },
-                            ),
-
-                            const SizedBox(height: 16),
-
-                            // Input password
-                            TextFormField(
-                              controller: _passwordController,
-                              obscureText: !_passwordVisible,
-                              decoration: InputDecoration(
-                                labelText: 'Password',
-                                prefixIcon: const Icon(
-                                  Icons.lock_outline,
-                                ),
-                                suffixIcon: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _passwordVisible =
-                                          !_passwordVisible;
-                                    });
-                                  },
-                                  icon: Icon(
-                                    _passwordVisible
-                                        ? Icons.visibility_off
-                                        : Icons.visibility,
-                                  ),
-                                ),
+                              filled: true,
+                              fillColor: Colors.white.withOpacity(0.9),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(14),
+                                borderSide: BorderSide.none,
                               ),
-                              validator: (value) {
-                                final password = value ?? '';
-
-                                if (password.isEmpty) {
-                                  return 'Password tidak boleh kosong';
-                                }
-
-                                if (password.length < 8) {
-                                  return 'Password minimal 8 karakter';
-                                }
-
-                                return null;
-                              },
                             ),
+                            validator: (value) {
+                              final password = value ?? '';
 
-                            const SizedBox(height: 24),
+                              if (password.isEmpty) {
+                                return 'Password tidak boleh kosong';
+                              }
 
-                            // Tombol login
-                            FilledButton(
-                              onPressed:
-                                  _isLoading ? null : _login,
-                              style: FilledButton.styleFrom(
-                                padding:
-                                    const EdgeInsets.symmetric(
-                                  vertical: 16,
-                                ),
+                              if (password.length < 8) {
+                                return 'Password minimal 8 karakter';
+                              }
+
+                              return null;
+                            },
+                          ),
+
+                          const SizedBox(height: 28),
+
+                          // Tombol Login
+                          FilledButton(
+                            onPressed: _isLoading ? null : _login,
+                            style: FilledButton.styleFrom(
+                              backgroundColor: Colors.indigo.shade700,
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 16,
                               ),
-                              child: _isLoading
-                                  ? const SizedBox(
-                                      height: 22,
-                                      width: 22,
-                                      child: CircularProgressIndicator(
-                                        strokeWidth: 2,
-                                        color: Colors.white,
-                                      ),
-                                    )
-                                  : const Text('Login'),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
                             ),
-                          ],
-                        ),
+                            child: _isLoading
+                                ? const SizedBox(
+                                    height: 22,
+                                    width: 22,
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 2,
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                : const Text('Login'),
+                          ),
+                        ],
                       ),
                     ),
                   ),
+
                 ),
               ),
             ),
