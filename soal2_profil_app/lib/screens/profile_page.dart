@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import '../models/profile.dart';
 import '../widgets/info_tile.dart';
-
+import 'about_page.dart';
 class ProfilePage extends StatefulWidget {
   final ValueChanged<ThemeMode> onThemeChanged;
   const ProfilePage({
@@ -45,7 +45,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
       body: _selectedIndex == 0
           ? _buildProfile()
-          : _buildAbout(),
+          : const AboutPage(),
 
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
@@ -208,9 +208,5 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  Widget _buildAbout() {
-    return const Center(
-      child: Text('Halaman Tentang Saya'),
-    );
-  }
+  
 }
