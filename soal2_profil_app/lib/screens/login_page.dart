@@ -1,9 +1,14 @@
-import 'package:flutter/material.dart';
 
-// import 'profile_page.dart';
+import 'package:flutter/material.dart';
+import 'package:soal2_profil_app/screens/profile_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  final ValueChanged<ThemeMode> onThemeChanged;
+
+  const LoginPage({
+    super.key,
+    required this.onThemeChanged,
+  });
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -40,7 +45,9 @@ class _LoginPageState extends State<LoginPage> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const ProfilePage(),
+        builder: (context) => ProfilePage(
+          onThemeChanged: widget.onThemeChanged,
+        ),
       ),
     );
   }
@@ -57,7 +64,6 @@ class _LoginPageState extends State<LoginPage> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F3FF),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
@@ -66,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
               constraints: const BoxConstraints(maxWidth: 420),
               child: Column(
                 children: [
-                  // Ilustrasi kampus di atas
+                  // Ilustrasi kampus
                   Image.asset(
                     'assets/images/login-ilustrasi.png',
                     height: screenHeight * 0.3,
@@ -79,11 +85,14 @@ class _LoginPageState extends State<LoginPage> {
                   Container(
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.surface,
                       borderRadius: BorderRadius.circular(28),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.indigo.withOpacity(0.12),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .shadow
+                              .withOpacity(0.12),
                           blurRadius: 24,
                           offset: const Offset(0, 8),
                         ),
@@ -102,7 +111,6 @@ class _LoginPageState extends State<LoginPage> {
                                 .textTheme
                                 .headlineSmall
                                 ?.copyWith(
-                                  color: Colors.indigo.shade800,
                                   fontWeight: FontWeight.bold,
                                 ),
                           ),
@@ -112,7 +120,11 @@ class _LoginPageState extends State<LoginPage> {
                           Text(
                             'Silakan login untuk melanjutkan',
                             textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.grey.shade600),
+                            style: TextStyle(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onSurfaceVariant,
+                            ),
                           ),
 
                           const SizedBox(height: 28),
@@ -125,7 +137,9 @@ class _LoginPageState extends State<LoginPage> {
                               labelText: 'Email',
                               prefixIcon: const Icon(Icons.email_outlined),
                               filled: true,
-                              fillColor: const Color(0xFFF5F3FF),
+                              fillColor: Theme.of(context)
+                                  .colorScheme
+                                  .surfaceContainerHighest,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(14),
                                 borderSide: BorderSide.none,
@@ -138,8 +152,9 @@ class _LoginPageState extends State<LoginPage> {
                                 return 'Email tidak boleh kosong';
                               }
 
-                              if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
-                                  .hasMatch(email)) {
+                              if (!RegExp(
+                                r'^[^@\s]+@[^@\s]+\.[^@\s]+$',
+                              ).hasMatch(email)) {
                                 return 'Format email tidak valid';
                               }
 
@@ -169,7 +184,9 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                               filled: true,
-                              fillColor: const Color(0xFFF5F3FF),
+                              fillColor: Theme.of(context)
+                                  .colorScheme
+                                  .surfaceContainerHighest,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(14),
                                 borderSide: BorderSide.none,
@@ -196,10 +213,9 @@ class _LoginPageState extends State<LoginPage> {
                           FilledButton(
                             onPressed: _isLoading ? null : _login,
                             style: FilledButton.styleFrom(
-                              backgroundColor: Colors.indigo.shade700,
-                              foregroundColor: Colors.white,
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 16),
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 16,
+                              ),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30),
                               ),
@@ -224,20 +240,6 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-// Halaman sementara
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Berhasil Login!'),
       ),
     );
   }

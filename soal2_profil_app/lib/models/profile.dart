@@ -24,15 +24,15 @@ class Profile {
 
   // Data awal profil
   static const initial = Profile(
-    name: 'Nama Mahasiswa',
-    nim: 'NIM lu',
+    name: 'hihuuu',
+    nim: '1124989898',
     prodi: 'Teknik Informatika',
     konsentrasi: 'Software Engineering',
-    kelas: 'Kelas lu',
-    bio: 'Mahasiswa yang tertarik dengan Backend Development.',
-    email: 'email@gmail.com',
+    kelas: 'TI 24 SE 1',
+    bio: 'HIIIIHUUUUUU',
+    email: 'hihu@gmail.com',
     phone: '081234567890',
-    github: 'github.com/username',
+    github: 'github.com/hihu',
   );
 
   // Membuat salinan dengan data yang diperbarui
