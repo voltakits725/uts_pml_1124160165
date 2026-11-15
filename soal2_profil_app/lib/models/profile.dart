@@ -51,7 +51,7 @@ class Profile {
       name: name ?? this.name,
       nim: nim ?? this.nim,
       prodi: prodi ?? this.prodi,
-      konsentrasi: konsentrasi ?? this.konsentrasi
+      konsentrasi: konsentrasi ?? this.konsentrasi,
       kelas: kelas ?? this.kelas,
       bio: bio ?? this.bio,
       email: email ?? this.email,
