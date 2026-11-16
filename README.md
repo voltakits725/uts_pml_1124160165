@@ -4,11 +4,11 @@ Aplikasi mobile berbasis Flutter sebagai tugas Ujian Tengah Semester mata kuliah
 
 ## 👤 Identitas Mahasiswa
 
-| Keterangan | Detail |
-|---|---|
-| Nama | Rafly Kurniawan |
-| NIM | 1124160165 |
-| Kelas | [Isi Kelas] |
+| Keterangan | Detail          |
+| ---------- | --------------- |
+| Nama       | Rafly Kurniawan |
+| NIM        | 1124160165      |
+| Kelas      | TI 24 SE-1     |
 
 ## 🔗 Project Links
 
@@ -25,26 +25,8 @@ Aplikasi mobile berbasis Flutter sebagai tugas Ujian Tengah Semester mata kuliah
 
 ## 📸 Application Screenshots
 
-### 01. Login Page
-
-![Login Page](docs/screenshots/login.png)
-
-### 02. Profile Page
-
-![Profile Page](docs/screenshots/profile.png)
-
-### 03. Edit Profile Page
-
-![Edit Profile Page](docs/screenshots/edit-profile.png)
-
-### 04. About Page
-
-![About Page](docs/screenshots/about.png)
+\<table>   \<tr>     \<td align="center">       \<strong>01. Login Page\</strong>\<br>\<br>       \<img src="docs/screenshots/login.png" width="220" alt="Login Page"/>     \</td>     \<td align="center">       \<strong>02. Profile Page\</strong>\<br>\<br>       \<img src="docs/screenshots/profile.png" width="220" alt="Profile Page"/>     \</td>   \</tr>   \<tr>     \<td align="center">       \<strong>03. Edit Profile Page\</strong>\<br>\<br>       \<img src="docs/screenshots/edit-profile.png" width="220" alt="Edit Profile Page"/>     \</td>     \<td align="center">       \<strong>04. About Page\</strong>\<br>\<br>       \<img src="docs/screenshots/about.png" width="220" alt="About Page"/>     \</td>   \</tr> \</table>
 
 ---
 
-<p align="center">
-  <strong>Developed by Rafly Kurniawan</strong>
-  <br>
-  Flutter & Dart | 2026
-</p>
+\<p align="center">   \<strong>Developed by Rafly Kurniawan\</strong>   \<br>   Flutter & Dart | 2026 \</p>
