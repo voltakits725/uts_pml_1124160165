@@ -1,4 +1,4 @@
-# Ujian Tengah Semester (UTS) – Pemrograman Mobile Lanjutan
+# Ujian Tengah Semester (UTS) – Aplikasi Mobile
 
 **Aplikasi Profil Mahasiswa – Flutter**
 
@@ -32,7 +32,7 @@ Video presentasi berisi demonstrasi aplikasi, penjelasan kode program, serta pro
 
 Aplikasi Android telah dibuat menggunakan perintah `flutter build apk --release`.
 
-📥 **Download APK:** [Download Aplikasi v1.0.0](MASUKKAN_LINK_GITHUB_RELEASE)
+📥 **Download APK:** [Download Aplikasi v1.0.0](https://github.com/voltakits725/uts_pml_1124160165/releases/tag/v1.0.0)
 
 ---
 
