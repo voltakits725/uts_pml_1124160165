@@ -1,16 +1,24 @@
 
 import 'package:flutter/material.dart';
+import '../widgets/info_tile.dart';
+import '../widgets/info_card.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark =
+        Theme.of(context).brightness == Brightness.dark;
 
-    final cardColor = isDark ? const Color(0xFF25283A) : const Color(0xFFEEF0FF);
+    final cardColor = isDark
+        ? const Color(0xFF25283A)
+        : const Color(0xFFEEF0FF);
 
-    final dividerColor = isDark ? const Color(0xFF414968) : const Color(0xFFC7CCF5);
+    final dividerColor = isDark
+        ? const Color(0xFF414968)
+        : const Color(0xFFC7CCF5);
+
     return ListView(
       padding: const EdgeInsets.all(20),
       children: [
@@ -33,7 +41,10 @@ class AboutPage extends StatelessWidget {
 
               Text(
                 'Tentang Saya',
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall
+                    ?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
               ),
@@ -50,98 +61,125 @@ class AboutPage extends StatelessWidget {
 
         const SizedBox(height: 28),
 
+        // Keahlian dan Hobi
         Text(
           'Keahlian & Hobi',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
+                fontWeight: FontWeight.bold,
+              ),
         ),
 
         const SizedBox(height: 12),
 
-        Card(
-          elevation: 8,
-          color: cardColor,
-          child: Column(
-            children: [
-              const ListTile(
-                leading: Icon(Icons.code),
-                title: Text('Backend Development'),
-                subtitle: Text('Node.js, Laravel, dan Express.js'),
-              ),
-              Divider(height: 2, thickness: 4, color: dividerColor),
-              ListTile(
-                leading: Icon(Icons.phone_android),
-                title: Text('Mobile Development'),
-                subtitle: Text('Flutter dan Dart'),
-              ),
-              
-              Divider(height: 2, thickness: 4, color: dividerColor),
-              ListTile(
-                leading: Icon(Icons.storage),
-                title: Text('Database Management'),
-                subtitle: Text('MySQL, PostgreSQL, dan MongoDB'),
-              ),
-              Divider(height: 2, thickness: 4, color: dividerColor),
-              ListTile(
-                leading: const Row(
-                    mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.code),
-                    SizedBox(width: 8,),
-                    Icon(Icons.sports_esports),
-                  ],
-                ),
-                title: const Text('Hobi'),
-                subtitle: const Text('Belajar coding dan Bermain Games'),
-              ),
-              Divider(height: 2, thickness: 4, color: Color(0xFFC7CCF5),),
+        InfoCard(
+          cardColor: cardColor,
+          dividerColor: dividerColor,
+          children: [
+            const InfoTile(
+              icon: Icons.code,
+              label: 'Backend Development',
+              value: 'Node.js, Laravel, dan Express.js',
+            ),
 
-            ],
-          ),
+            const InfoTile(
+              icon: Icons.phone_android,
+              label: 'Mobile Development',
+              value: 'Flutter dan Dart',
+            ),
+
+            const InfoTile(
+              icon: Icons.storage,
+              label: 'Database Management',
+              value: 'MySQL, PostgreSQL, dan MongoDB',
+            ),
+
+            const ListTile(
+              leading: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.code),
+                  SizedBox(width: 8),
+                  Icon(Icons.sports_esports),
+                ],
+              ),
+              title: Text('Hobi'),
+              subtitle: Text(
+                'Belajar Coding dan Bermain Games',
+              ),
+            ),
+          ],
         ),
 
         const SizedBox(height: 24),
+
+        // Riwayat Pendidikan
         Text(
           'Riwayat Pendidikan',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 12,),
-
-        Card(
-          elevation: 8,
-          color: cardColor,
-          child: Column(
-            children: [
-              ListTile(
-                leading: Icon(Icons.school_outlined),
-                title: Text('Sekolah Menengah Atas'),
-                subtitle: Text('SMA, Adalah Pokoknya'),
+                fontWeight: FontWeight.bold,
               ),
-              Divider(height: 2, thickness: 4, color: dividerColor,),
-              ListTile(
-                leading: Icon(Icons.account_balance_outlined),
-                title: Text('Global Institute'),
-                subtitle: Text('Teknik Informatika - Software Engineering'),
-              )
-            ],
-          ),
         ),
-         const SizedBox(height: 24),
+
+        const SizedBox(height: 12),
+
+        InfoCard(
+          cardColor: cardColor,
+          dividerColor: dividerColor,
+          children: const [
+            InfoTile(
+              icon: Icons.school_outlined,
+              label: 'Sekolah Menengah Atas',
+              value: 'SMA, Adalah Pokoknya',
+            ),
+
+            InfoTile(
+              icon: Icons.account_balance_outlined,
+              label: 'Global Institute',
+              value: 'Teknik Informatika - Software Engineering',
+            ),
+          ],
+        ),
+
+        const SizedBox(height: 24),
+
+        // Card Penutup
         Card(
           color: cardColor,
           child: Padding(
             padding: const EdgeInsets.all(16),
-            child: Text( 'Saya terus berusaha mengembangkan kemampuan '
-              'di bidang teknologi, khususnya pengembangan '
-              'perangkat lunak dan aplikasi.',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyMedium,
-              ),
+            child: Column(
+              children: [
+                Icon(
+                  Icons.rocket_launch_outlined,
+                  size: 32,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  'Terus Berkembang',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+
+                const SizedBox(height: 8),
+                Text(
+                  'Saya adalah mahasiswa Teknik Informatika '
+                  'dengan konsentrasi Software Engineering. '
+                  'Saya memiliki ketertarikan dalam bidang '
+                  'pengembangan perangkat lunak, khususnya '
+                  'Backend Development dan Mobile Development. '
+                  'Saya terus belajar dan mengembangkan '
+                  'kemampuan untuk menjadi developer yang lebih baik.',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ],
+            ),
           ),
-        )
+        ),
+
+        const SizedBox(height: 20),
       ],
     );
   }
