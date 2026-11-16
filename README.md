@@ -47,7 +47,7 @@ Aplikasi **Profil Mahasiswa** berbasis Flutter dan Dart yang dibuat untuk memenu
 
 ## 🎥 Video Presentasi
 
-[▶️ Tonton Video Presentasi di YouTube](GANTI_DENGAN_LINK_YOUTUBE)
+[▶️ Tonton Video Presentasi di YouTube](https://youtu.be/TpZkUUnyEqg)
 
 > Ganti tautan di atas dengan link video YouTube setelah video presentasi diunggah.
 
