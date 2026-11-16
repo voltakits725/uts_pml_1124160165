@@ -1,14 +1,14 @@
 # 📱 UTS Aplikasi Mobile
 
-Aplikasi Mobile berbasis Flutter sebagai tugas Ujian Tengah Semester mata kuliah Pemrograman Mobile Lanjutan.
+Aplikasi mobile berbasis Flutter sebagai tugas Ujian Tengah Semester mata kuliah Pemrograman Mobile Lanjutan.
 
 ## 👤 Identitas Mahasiswa
 
-| Keterangan | Detail          |
-| ---------- | --------------- |
-| Nama       | Rafly Kurniawan |
-| NIM        | 1124160165      |
-| Kelas      | [Isi Kelas Lu]  |
+| Keterangan | Detail |
+|---|---|
+| Nama | Rafly Kurniawan |
+| NIM | 1124160165 |
+| Kelas | [Isi Kelas] |
 
 ## 🔗 Project Links
 
@@ -19,29 +19,32 @@ Aplikasi Mobile berbasis Flutter sebagai tugas Ujian Tengah Semester mata kuliah
 
 - **Login Page** – Halaman login dengan validasi email dan password.
 - **Profile Page** – Menampilkan informasi dan data profil mahasiswa.
+- **Edit Profile** – Mengubah informasi profil melalui form yang dilengkapi validasi.
 - **About Page** – Menampilkan informasi tentang diri, pendidikan, dan keahlian.
-- **Edit Profile** – Memungkinkan pengguna mengubah informasi profil.
 - **Light & Dark Mode** – Mendukung dua pilihan tema tampilan aplikasi.
 
 ## 📸 Application Screenshots
 
-### 1. Login Page
+### 01. Login Page
 
-\<p align="center">   \<img src="docs/screenshots/login.png" width="250" alt="Login Page"/> \</p>
+![Login Page](docs/screenshots/login.png)
 
-### 2. Profile Page
+### 02. Profile Page
 
-\<p align="center">   \<img src="docs/screenshots/profile.png" width="250" alt="Profile Page"/> \</p>
+![Profile Page](docs/screenshots/profile.png)
 
-### 3. About Page
+### 03. Edit Profile Page
 
-\<p align="center">   \<img src="docs/screenshots/about.png" width="250" alt="About Page"/> \</p>
+![Edit Profile Page](docs/screenshots/edit-profile.png)
+
+### 04. About Page
+
+![About Page](docs/screenshots/about.png)
 
 ---
 
-\<p align="center">
-&#x20; \*\*Developed by Rafly Kurniawan\*\*
-
-Flutter & Dart | 2026
-
-\</p>
+<p align="center">
+  <strong>Developed by Rafly Kurniawan</strong>
+  <br>
+  Flutter & Dart | 2026
+</p>
