@@ -55,6 +55,8 @@ class AboutPage extends StatelessWidget {
         const SizedBox(height: 12),
 
         Card(
+          elevation: 8,
+          color: const Color(0xFFEEF0FF),
           child: Column(
             children: [
               const ListTile(
@@ -62,20 +64,20 @@ class AboutPage extends StatelessWidget {
                 title: Text('Backend Development'),
                 subtitle: Text('Node.js, Laravel, dan Express.js'),
               ),
-              Divider(height: 2, thickness: 4, color: Colors.teal[400],),
+              Divider(height: 2, thickness: 4, color: Color(0xFFC7CCF5),),
               ListTile(
                 leading: Icon(Icons.phone_android),
                 title: Text('Mobile Development'),
                 subtitle: Text('Flutter dan Dart'),
               ),
               
-              Divider(height: 2, thickness: 4, color: Colors.teal[400],),
+              Divider(height: 2, thickness: 4, color: Color(0xFFC7CCF5),),
               ListTile(
                 leading: Icon(Icons.storage),
                 title: Text('Database Management'),
                 subtitle: Text('MySQL, PostgreSQL, dan MongoDB'),
               ),
-              Divider(height: 2, thickness: 4, color: Colors.teal[400],),
+              Divider(height: 2, thickness: 4, color: Color(0xFFC7CCF5),),
               ListTile(
                 leading: const Row(
                     mainAxisSize: MainAxisSize.min,
@@ -88,7 +90,7 @@ class AboutPage extends StatelessWidget {
                 title: const Text('Hobi'),
                 subtitle: const Text('Belajar coding dan Bermain Games'),
               ),
-              Divider(height: 2, thickness: 4, color: Colors.teal[400],),
+              Divider(height: 2, thickness: 4, color: Color(0xFFC7CCF5),),
 
             ],
           ),
@@ -117,6 +119,20 @@ class AboutPage extends StatelessWidget {
                 subtitle: Text('Teknik Informatika - Software Engineering'),
               )
             ],
+          ),
+        ),
+         const SizedBox(height: 24),
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Text( 'Saya terus berusaha mengembangkan kemampuan '
+              'di bidang teknologi, khususnya pengembangan '
+              'perangkat lunak dan aplikasi.',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodyMedium,
+              
+              ),
+        
           ),
         )
       ],
