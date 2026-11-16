@@ -6,6 +6,11 @@ class AboutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    final cardColor = isDark ? const Color(0xFF25283A) : const Color(0xFFEEF0FF);
+
+    final dividerColor = isDark ? const Color(0xFF414968) : const Color(0xFFC7CCF5);
     return ListView(
       padding: const EdgeInsets.all(20),
       children: [
@@ -56,7 +61,7 @@ class AboutPage extends StatelessWidget {
 
         Card(
           elevation: 8,
-          color: const Color(0xFFEEF0FF),
+          color: cardColor,
           child: Column(
             children: [
               const ListTile(
@@ -64,20 +69,20 @@ class AboutPage extends StatelessWidget {
                 title: Text('Backend Development'),
                 subtitle: Text('Node.js, Laravel, dan Express.js'),
               ),
-              Divider(height: 2, thickness: 4, color: Color(0xFFC7CCF5),),
+              Divider(height: 2, thickness: 4, color: dividerColor),
               ListTile(
                 leading: Icon(Icons.phone_android),
                 title: Text('Mobile Development'),
                 subtitle: Text('Flutter dan Dart'),
               ),
               
-              Divider(height: 2, thickness: 4, color: Color(0xFFC7CCF5),),
+              Divider(height: 2, thickness: 4, color: dividerColor),
               ListTile(
                 leading: Icon(Icons.storage),
                 title: Text('Database Management'),
                 subtitle: Text('MySQL, PostgreSQL, dan MongoDB'),
               ),
-              Divider(height: 2, thickness: 4, color: Color(0xFFC7CCF5),),
+              Divider(height: 2, thickness: 4, color: dividerColor),
               ListTile(
                 leading: const Row(
                     mainAxisSize: MainAxisSize.min,
@@ -104,7 +109,10 @@ class AboutPage extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12,),
+
         Card(
+          elevation: 8,
+          color: cardColor,
           child: Column(
             children: [
               ListTile(
@@ -112,7 +120,7 @@ class AboutPage extends StatelessWidget {
                 title: Text('Sekolah Menengah Atas'),
                 subtitle: Text('SMA, Adalah Pokoknya'),
               ),
-              Divider(height: 2, thickness: 4, color: Colors.teal[400],),
+              Divider(height: 2, thickness: 4, color: dividerColor,),
               ListTile(
                 leading: Icon(Icons.account_balance_outlined),
                 title: Text('Global Institute'),
@@ -123,6 +131,7 @@ class AboutPage extends StatelessWidget {
         ),
          const SizedBox(height: 24),
         Card(
+          color: cardColor,
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Text( 'Saya terus berusaha mengembangkan kemampuan '
@@ -130,9 +139,7 @@ class AboutPage extends StatelessWidget {
               'perangkat lunak dan aplikasi.',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium,
-              
               ),
-        
           ),
         )
       ],
