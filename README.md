@@ -55,23 +55,28 @@ Aplikasi **Profil Mahasiswa** berbasis Flutter dan Dart yang dibuat untuk memenu
 
 ## 📸 Screenshot Hasil Aplikasi
 
-Berikut merupakan tampilan dari empat halaman utama aplikasi Profil Mahasiswa.
-
-### 1. Halaman Login
-
-![Halaman Login](screenshots/login.png)
-
-### 2. Halaman Profil
-
-![Halaman Profil](screenshots/profile.png)
-
-### 3. Halaman Edit Profil
-
-![Halaman Edit Profil](screenshots/edit-profile.png)
-
-### 4. Halaman About / Tentang Saya
-
-![Halaman About](screenshots/about.png)
+<table>
+  <tr>
+    <td align="center">
+      <b>1. Halaman Login</b><br>
+      <img src="screenshots/login.png" width="250">
+    </td>
+    <td align="center">
+      <b>2. Halaman Profil</b><br>
+      <img src="screenshots/profile.png" width="250">
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <b>3. Halaman Edit Profil</b><br>
+      <img src="screenshots/edit-profile.png" width="250">
+    </td>
+    <td align="center">
+      <b>4. Halaman About</b><br>
+      <img src="screenshots/about.png" width="250">
+    </td>
+  </tr>
+</table>
 
 ---
 
