@@ -62,19 +62,20 @@ class AboutPage extends StatelessWidget {
                 title: Text('Backend Development'),
                 subtitle: Text('Node.js, Laravel, dan Express.js'),
               ),
-              Divider(height: 1),
+              Divider(height: 2, thickness: 4, color: Colors.teal[400],),
               ListTile(
                 leading: Icon(Icons.phone_android),
                 title: Text('Mobile Development'),
                 subtitle: Text('Flutter dan Dart'),
               ),
-              Divider(height: 1),
+              
+              Divider(height: 2, thickness: 4, color: Colors.teal[400],),
               ListTile(
                 leading: Icon(Icons.storage),
                 title: Text('Database Management'),
                 subtitle: Text('MySQL, PostgreSQL, dan MongoDB'),
               ),
-              Divider(height: 1,),
+              Divider(height: 2, thickness: 4, color: Colors.teal[400],),
               ListTile(
                 leading: const Row(
                     mainAxisSize: MainAxisSize.min,
@@ -87,7 +88,34 @@ class AboutPage extends StatelessWidget {
                 title: const Text('Hobi'),
                 subtitle: const Text('Belajar coding dan Bermain Games'),
               ),
+              Divider(height: 2, thickness: 4, color: Colors.teal[400],),
 
+            ],
+          ),
+        ),
+
+        const SizedBox(height: 24),
+        Text(
+          'Riwayat Pendidikan',
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 12,),
+        Card(
+          child: Column(
+            children: [
+              ListTile(
+                leading: Icon(Icons.school_outlined),
+                title: Text('Sekolah Menengah Atas'),
+                subtitle: Text('SMA, Adalah Pokoknya'),
+              ),
+              Divider(height: 2, thickness: 4, color: Colors.teal[400],),
+              ListTile(
+                leading: Icon(Icons.account_balance_outlined),
+                title: Text('Global Institute'),
+                subtitle: Text('Teknik Informatika - Software Engineering'),
+              )
             ],
           ),
         )
