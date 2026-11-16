@@ -1,32 +1,54 @@
-# 📱 UTS Aplikasi Mobile
+UTS Aplikasi Mobile
+Aplikasi Profil Mahasiswa yang dikembangkan menggunakan Flutter dan
+Dart untuk memenuhi tugas Ujian Tengah Semester (UTS) Pemrograman
+Mobile.
+Identitas Mahasiswa
+  Keterangan      Data
+  Nama            Rafly Kurniawan
+NIM             1124160165
+Program Studi   Teknik Informatika
+Konsentrasi     Software Engineering
+Institusi       Global Institute
+Fitur-Fitur Aplikasi
+- Login dengan validasi form --- memeriksa input email dan
+  password sebelum masuk ke aplikasi.
+- Halaman Profil Mahasiswa --- menampilkan informasi pribadi,
+  akademik, dan kontak.
+- Edit Profil --- memungkinkan pengguna memperbarui data profil
+  dengan validasi input, termasuk validasi NIM.
+- Halaman Tentang Saya --- menampilkan keahlian, hobi, dan riwayat
+  pendidikan.
+- Light Mode dan Dark Mode --- menyediakan pilihan tema terang dan
+  gelap.
+- BottomNavigationBar --- berpindah antara halaman Profil dan
+  Tentang Saya.
+- FloatingActionButton --- membuka halaman Edit Profil.
+- Pembaruan data profil --- mengirimkan data hasil edit kembali ke
+  halaman profil.
+Teknologi
+- Flutter
+- Dart
+- Material Design 3
+Download APK
+Versi aplikasi: v1.0.0
 
-Aplikasi mobile berbasis Flutter sebagai tugas Ujian Tengah Semester mata kuliah Pemrograman Mobile Lanjutan.
+Download app-release.apk melalui GitHub
+Releases
+Video Presentasi
+Link video presentasi YouTube
+Ganti GANTI_DENGAN_LINK_YOUTUBE dengan URL video YouTube setelah
+video diunggah.
 
-## 👤 Identitas Mahasiswa
+Screenshot Hasil Aplikasi
+Tambahkan empat screenshot aplikasi ke folder screenshots pada
+repository dengan nama file berikut. Setelah file gambar diunggah,
+gambar akan tampil di bagian ini.
+1. Halaman Login
 
-| Keterangan | Detail          |
-| ---------- | --------------- |
-| Nama       | Rafly Kurniawan |
-| NIM        | 1124160165      |
-| Kelas      | TI 24 SE-1     |
+2. Halaman Profil
 
-## 🔗 Project Links
+3. Halaman Edit Profil
 
-- 📦 **APK Release:** [Download Aplikasi](MASUKKAN_LINK_RELEASE)
-- 🎥 **Video Demo:** [Tonton di YouTube](MASUKKAN_LINK_YOUTUBE)
+4. Halaman About / Tentang Saya
 
-## ✨ Fitur Aplikasi
-
-- **Login Page** – Halaman login dengan validasi email dan password.
-- **Profile Page** – Menampilkan informasi dan data profil mahasiswa.
-- **Edit Profile** – Mengubah informasi profil melalui form yang dilengkapi validasi.
-- **About Page** – Menampilkan informasi tentang diri, pendidikan, dan keahlian.
-- **Light & Dark Mode** – Mendukung dua pilihan tema tampilan aplikasi.
-
-## 📸 Application Screenshots
-
-\<table>   \<tr>     \<td align="center">       \<strong>01. Login Page\</strong>\<br>\<br>       \<img src="docs/screenshots/login.png" width="220" alt="Login Page"/>     \</td>     \<td align="center">       \<strong>02. Profile Page\</strong>\<br>\<br>       \<img src="docs/screenshots/profile.png" width="220" alt="Profile Page"/>     \</td>   \</tr>   \<tr>     \<td align="center">       \<strong>03. Edit Profile Page\</strong>\<br>\<br>       \<img src="docs/screenshots/edit-profile.png" width="220" alt="Edit Profile Page"/>     \</td>     \<td align="center">       \<strong>04. About Page\</strong>\<br>\<br>       \<img src="docs/screenshots/about.png" width="220" alt="About Page"/>     \</td>   \</tr> \</table>
-
----
-
-\<p align="center">   \<strong>Developed by Rafly Kurniawan\</strong>   \<br>   Flutter & Dart | 2026 \</p>
+Dibuat oleh Rafly Kurniawan --- UTS Pemrograman Mobile.
