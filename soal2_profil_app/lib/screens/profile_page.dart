@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:soal2_profil_app/screens/edit_profile_page.dart';
 
 import '../models/profile.dart';
 import '../widgets/profile_content.dart';
@@ -76,18 +77,27 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
 
       // Floating Action Button
+      
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text(
-                'Fitur Edit Profil akan segera dibuat',
+        onPressed: () async {
+          final updatedProfile = await Navigator.push<Profile>(
+            context,
+            MaterialPageRoute(
+              builder: (context) => EditProfilePage(
+                profile: profile,
               ),
             ),
           );
+
+          if (updatedProfile != null) {
+            setState(() {
+              profile = updatedProfile;
+            });
+          }
         },
         child: const Icon(Icons.edit),
       ),
+
     );
   }
 }
